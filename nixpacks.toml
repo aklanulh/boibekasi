@@ -7,12 +7,15 @@ nixPkgs = [
   "php82Extensions.pgsql",
   "php82Extensions.tokenizer",
   "php82Packages.composer",
-  "curl"
+  "curl",
+  "nodejs_20" # ✅ tambahkan ini
 ]
 
 [phases.build]
 cmds = [
-  "composer install --no-dev --optimize-autoloader"
+  "composer install --no-dev --optimize-autoloader",
+  "npm install", # atau "npm ci" kalau pakai package-lock.json
+  "npm run build"
 ]
 
 [phases.start]
