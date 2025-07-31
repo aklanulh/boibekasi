@@ -8,7 +8,7 @@ nixPkgs = [
   "php82Extensions.tokenizer",
   "php82Packages.composer",
   "curl",
-  "nodejs_20" # ✅ tambahkan ini
+  "nodejs_20" 
 ]
 
 [phases.build]
@@ -19,4 +19,4 @@ cmds = [
 ]
 
 [phases.start]
-cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "php -S 0.0.0.0:$PORT -t public"
