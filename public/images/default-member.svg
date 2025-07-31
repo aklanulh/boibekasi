@@ -1,0 +1,16 @@
+<svg width="120" height="160" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="120" height="160" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2"/>
+  
+  <!-- Person silhouette -->
+  <g transform="translate(60, 80)">
+    <!-- Head -->
+    <circle cx="0" cy="-25" r="18" fill="#6c757d"/>
+    
+    <!-- Body -->
+    <path d="M -25 5 Q -25 -5 -15 -10 L 15 -10 Q 25 -5 25 5 L 25 40 Q 25 45 20 45 L -20 45 Q -25 45 -25 40 Z" fill="#6c757d"/>
+  </g>
+  
+  <!-- BOI Text -->
+  <text x="60" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#28a745" font-weight="bold">BOI BEKASI</text>
+</svg>
