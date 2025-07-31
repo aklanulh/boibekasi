@@ -11,13 +11,17 @@ nixPkgs = [
   "nodejs_20"
 ]
 cmds = [
-  "cp .env.production .env"
+  "cp .env.production .env"  # Pastikan file .env ada sebelum artisan dipanggil
 ]
 
 [phases.build]
 cmds = [
   "composer install --no-dev --optimize-autoloader",
-  "php artisan config:cache",
+  "chmod -R 775 storage bootstrap/cache",             # Wajib untuk Laravel bisa menulis log & cache
+  "php artisan config:clear",                          # Bersihkan cache lama
+  "php artisan route:clear",
+  "php artisan view:clear",
+  "php artisan config:cache",                          # Re-cache config setelah .env tersedia
   "php artisan route:cache",
   "npm install",
   "npm run build"
