@@ -11,14 +11,18 @@ nixPkgs = [
   "nodejs_20"
 ]
 cmds = [
-  "cp .env.production .env"
+  "cp .env.production .env",
+  "mkdir -p bootstrap/cache storage/logs",
+  "chmod -R 775 bootstrap/cache storage"
 ]
 
 [phases.build]
 cmds = [
   "composer install --no-dev --optimize-autoloader",
+  "php artisan config:clear",
   "php artisan config:cache",
   "php artisan route:cache",
+  "php artisan view:cache",
   "npm install",
   "npm run build"
 ]
