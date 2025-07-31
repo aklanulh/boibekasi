@@ -2,7 +2,7 @@
 nixPkgs = [
   "php82",
   "php82Packages.composer",
-  "php82Packages.curl",
+  "curl", 
   "php82Packages.mbstring",
   "php82Packages.pdo",
   "php82Packages.pgsql",
