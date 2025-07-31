@@ -8,13 +8,16 @@ nixPkgs = [
   "php82Extensions.tokenizer",
   "php82Packages.composer",
   "curl",
-  "nodejs_20" 
+  "nodejs_20"
+]
+cmds = [
+  "cp .env.production .env"  # ← tambahkan ini agar .env dikenali Laravel
 ]
 
 [phases.build]
 cmds = [
   "composer install --no-dev --optimize-autoloader",
-  "npm install", # atau "npm ci" kalau pakai package-lock.json
+  "npm install",
   "npm run build"
 ]
 
