@@ -11,15 +11,17 @@ nixPkgs = [
   "nodejs_20"
 ]
 cmds = [
-  "cp .env.production .env"  # ← tambahkan ini agar .env dikenali Laravel
+  "cp .env.production .env"
 ]
 
 [phases.build]
 cmds = [
   "composer install --no-dev --optimize-autoloader",
+  "php artisan config:cache",
+  "php artisan route:cache",
   "npm install",
   "npm run build"
 ]
 
 [phases.start]
-cmd = "php -S 0.0.0.0:$PORT -t public"
+cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
