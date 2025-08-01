@@ -16,33 +16,33 @@
         <div class="col-lg-3 col-md-6 mb-3">
             <div class="stats-card">
                 <i class="fas fa-users fa-2x mb-3"></i>
-                <h3>{{ $stats['total_members'] }}</h3>
+                <h3>{{ $stats['members'] }}</h3>
                 <p class="mb-0">Total Member</p>
-                <small>{{ $stats['active_members'] }} aktif</small>
+                <small>Aktif</small>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-3">
             <div class="stats-card" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
                 <i class="fas fa-shopping-bag fa-2x mb-3"></i>
-                <h3>{{ $stats['total_merchandise'] }}</h3>
+                <h3>{{ $stats['merchandises'] }}</h3>
                 <p class="mb-0">Merchandise</p>
-                <small>{{ $stats['available_merchandise'] }} tersedia</small>
+                <small>Tersedia</small>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-3">
             <div class="stats-card" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
                 <i class="fas fa-calendar fa-2x mb-3"></i>
-                <h3>{{ $stats['total_events'] }}</h3>
+                <h3>{{ $stats['events'] }}</h3>
                 <p class="mb-0">Total Events</p>
-                <small>{{ $stats['upcoming_events'] }} mendatang</small>
+                <small>Terdaftar</small>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-3">
             <div class="stats-card" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
                 <i class="fas fa-images fa-2x mb-3"></i>
-                <h3>{{ $stats['total_documentation'] }}</h3>
+                <h3>{{ $stats['documentations'] }}</h3>
                 <p class="mb-0">Dokumentasi</p>
-                <small>{{ $stats['published_documentation'] }} published</small>
+                <small>Tersimpan</small>
             </div>
         </div>
     </div>

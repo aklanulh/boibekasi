@@ -6,6 +6,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MerchandiseController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\DocumentationController;
+use App\Http\Controllers\AdminController;
 
 // Public routes - Coming Soon pages
 Route::get('/', function() {
@@ -26,6 +27,17 @@ Route::get('/documentation', function() {
 
 // Active routes
 Route::get('/events', [EventController::class, 'index'])->name('events');
+
+// Admin routes
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'showLogin'])->name('admin.login');
+    Route::post('/login', [AdminController::class, 'login'])->name('admin.login.post');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/tinker', [AdminController::class, 'tinker'])->name('admin.tinker');
+    Route::post('/tinker/execute', [AdminController::class, 'executeTinker'])->name('admin.tinker.execute');
+    Route::get('/database', [AdminController::class, 'databaseInfo'])->name('admin.database');
+    Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+});
 
 // Default login route redirect
 Route::get('/login', function() {

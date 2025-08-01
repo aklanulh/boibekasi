@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Admin Panel - BOI Bekasi')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -175,6 +176,23 @@
                     Dokumentasi
                 </a>
             </li>
+            <li class="nav-item mt-3">
+                <h6 class="text-light px-3 mb-2 opacity-75">Tools</h6>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.tinker') ? 'active' : '' }}" 
+                   href="{{ route('admin.tinker') }}">
+                    <i class="fas fa-terminal me-2"></i>
+                    Tinker
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.database') ? 'active' : '' }}" 
+                   href="{{ route('admin.database') }}">
+                    <i class="fas fa-database me-2"></i>
+                    Database
+                </a>
+            </li>
             <li class="nav-item mt-4">
                 <a class="nav-link" href="{{ route('home') }}" target="_blank">
                     <i class="fas fa-external-link-alt me-2"></i>
@@ -194,11 +212,12 @@
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="fas fa-user-circle me-2"></i>
-                        {{ Auth::user()->name }}
+                        Administrator
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.tinker') }}"><i class="fas fa-terminal me-2"></i>Tinker</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.database') }}"><i class="fas fa-database me-2"></i>Database</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{{ route('admin.logout') }}" method="POST" style="display: inline;">
