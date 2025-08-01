@@ -42,7 +42,7 @@ class Holiday
      */
     public static function getByYear(int $year): Collection
     {
-        $holidays = match($year) {
+        $holidays = match ($year) {
             2025 => self::$holidays2025,
             default => []
         };
@@ -65,9 +65,9 @@ class Holiday
      */
     public static function getByMonth(int $year, int $month): Collection
     {
-        return self::getByYear($year)->filter(function ($holiday) use ($month) {
-            return $holiday->date->month === $month;
-        });
+        return self::getByYear($year)
+            ->filter(fn($holiday) => $holiday->date->month === $month)
+            ->groupBy(fn($holiday) => $holiday->date->format('j'));
     }
 
     /**
@@ -97,7 +97,7 @@ class Holiday
      */
     private static function getTypeColor(string $type): string
     {
-        return match($type) {
+        return match ($type) {
             'national' => '#dc3545', // Merah untuk hari nasional
             'religious' => '#28a745', // Hijau untuk hari keagamaan
             'regional' => '#007bff', // Biru untuk hari regional
@@ -111,7 +111,7 @@ class Holiday
      */
     private static function getTypeLabel(string $type): string
     {
-        return match($type) {
+        return match ($type) {
             'national' => 'Hari Nasional',
             'religious' => 'Hari Keagamaan',
             'regional' => 'Hari Regional',
