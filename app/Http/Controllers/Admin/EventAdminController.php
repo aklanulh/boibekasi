@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class EventAdminController extends Controller
 {
@@ -14,6 +15,10 @@ class EventAdminController extends Controller
      */
     public function index()
     {
+        if (!Session::get('admin_logged_in')) {
+            return redirect()->route('admin.login');
+        }
+        
         $events = Event::orderBy('date', 'desc')->paginate(10);
         return view('admin.events.index', compact('events'));
     }
@@ -23,6 +28,10 @@ class EventAdminController extends Controller
      */
     public function create()
     {
+        if (!Session::get('admin_logged_in')) {
+            return redirect()->route('admin.login');
+        }
+        
         return view('admin.events.create');
     }
 
@@ -31,6 +40,10 @@ class EventAdminController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Session::get('admin_logged_in')) {
+            return redirect()->route('admin.login');
+        }
+        
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -65,6 +78,10 @@ class EventAdminController extends Controller
      */
     public function show(string $id)
     {
+        if (!Session::get('admin_logged_in')) {
+            return redirect()->route('admin.login');
+        }
+        
         $event = Event::findOrFail($id);
         return view('admin.events.show', compact('event'));
     }
@@ -74,6 +91,10 @@ class EventAdminController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Session::get('admin_logged_in')) {
+            return redirect()->route('admin.login');
+        }
+        
         $event = Event::findOrFail($id);
         return view('admin.events.edit', compact('event'));
     }
@@ -83,6 +104,10 @@ class EventAdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if (!Session::get('admin_logged_in')) {
+            return redirect()->route('admin.login');
+        }
+        
         $event = Event::findOrFail($id);
         
         $request->validate([
@@ -123,6 +148,10 @@ class EventAdminController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Session::get('admin_logged_in')) {
+            return redirect()->route('admin.login');
+        }
+        
         $event = Event::findOrFail($id);
         
         // Delete image file

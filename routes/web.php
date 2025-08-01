@@ -55,13 +55,14 @@ Route::prefix('admin')->group(function () {
     Route::put('/merchandise/{id}', function() { return redirect()->route('admin.dashboard'); })->name('admin.merchandise.update');
     Route::delete('/merchandise/{id}', function() { return redirect()->route('admin.dashboard'); })->name('admin.merchandise.destroy');
     
-    Route::get('/events', function() { return redirect()->route('admin.dashboard')->with('info', 'Event management coming soon!'); })->name('admin.events.index');
-    Route::get('/events/create', function() { return redirect()->route('admin.dashboard'); })->name('admin.events.create');
-    Route::get('/events/{id}', function() { return redirect()->route('admin.dashboard'); })->name('admin.events.show');
-    Route::get('/events/{id}/edit', function() { return redirect()->route('admin.dashboard'); })->name('admin.events.edit');
-    Route::post('/events', function() { return redirect()->route('admin.dashboard'); })->name('admin.events.store');
-    Route::put('/events/{id}', function() { return redirect()->route('admin.dashboard'); })->name('admin.events.update');
-    Route::delete('/events/{id}', function() { return redirect()->route('admin.dashboard'); })->name('admin.events.destroy');
+    // Event Management Routes
+    Route::get('/events', [App\Http\Controllers\Admin\EventAdminController::class, 'index'])->name('admin.events.index');
+    Route::get('/events/create', [App\Http\Controllers\Admin\EventAdminController::class, 'create'])->name('admin.events.create');
+    Route::post('/events', [App\Http\Controllers\Admin\EventAdminController::class, 'store'])->name('admin.events.store');
+    Route::get('/events/{id}', [App\Http\Controllers\Admin\EventAdminController::class, 'show'])->name('admin.events.show');
+    Route::get('/events/{id}/edit', [App\Http\Controllers\Admin\EventAdminController::class, 'edit'])->name('admin.events.edit');
+    Route::put('/events/{id}', [App\Http\Controllers\Admin\EventAdminController::class, 'update'])->name('admin.events.update');
+    Route::delete('/events/{id}', [App\Http\Controllers\Admin\EventAdminController::class, 'destroy'])->name('admin.events.destroy');
     
     Route::get('/documentation', function() { return redirect()->route('admin.dashboard')->with('info', 'Documentation management coming soon!'); })->name('admin.documentation.index');
     Route::get('/documentation/create', function() { return redirect()->route('admin.dashboard'); })->name('admin.documentation.create');
