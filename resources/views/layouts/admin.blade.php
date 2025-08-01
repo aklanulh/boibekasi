@@ -161,10 +161,11 @@
                 </span>
             </li>
             <li class="nav-item">
-                <span class="nav-link text-muted">
+                <a class="nav-link {{ request()->routeIs('admin.events.*') ? 'active' : '' }}" 
+                   href="{{ route('admin.events.index') }}">
                     <i class="fas fa-calendar me-2"></i>
-                    Events <small>(Coming Soon)</small>
-                </span>
+                    Events
+                </a>
             </li>
             <li class="nav-item">
                 <span class="nav-link text-muted">
