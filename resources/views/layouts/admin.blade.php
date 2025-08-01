@@ -149,32 +149,28 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.members.*') ? 'active' : '' }}" 
-                   href="{{ route('admin.members.index') }}">
+                <span class="nav-link text-muted">
                     <i class="fas fa-users me-2"></i>
-                    Member
-                </a>
+                    Member <small>(Coming Soon)</small>
+                </span>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.merchandise.*') ? 'active' : '' }}" 
-                   href="{{ route('admin.merchandise.index') }}">
+                <span class="nav-link text-muted">
                     <i class="fas fa-shopping-bag me-2"></i>
-                    Merchandise
-                </a>
+                    Merchandise <small>(Coming Soon)</small>
+                </span>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.events.*') ? 'active' : '' }}" 
-                   href="{{ route('admin.events.index') }}">
+                <span class="nav-link text-muted">
                     <i class="fas fa-calendar me-2"></i>
-                    Events
-                </a>
+                    Events <small>(Coming Soon)</small>
+                </span>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.documentation.*') ? 'active' : '' }}" 
-                   href="{{ route('admin.documentation.index') }}">
+                <span class="nav-link text-muted">
                     <i class="fas fa-images me-2"></i>
-                    Dokumentasi
-                </a>
+                    Dokumentasi <small>(Coming Soon)</small>
+                </span>
             </li>
             <li class="nav-item mt-3">
                 <h6 class="text-light px-3 mb-2 opacity-75">Tools</h6>
