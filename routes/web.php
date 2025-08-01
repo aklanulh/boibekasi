@@ -44,18 +44,4 @@ Route::get('/login', function() {
     return redirect()->route('admin.login');
 })->name('login');
 
-// Admin authentication routes
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/login', [App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [App\Http\Controllers\Admin\AuthController::class, 'login']);
-    Route::post('/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
-});
 
-// Protected admin routes
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('dashboard');
-    Route::resource('members', App\Http\Controllers\Admin\MemberAdminController::class);
-    Route::resource('merchandise', App\Http\Controllers\Admin\MerchandiseAdminController::class);
-    Route::resource('events', App\Http\Controllers\Admin\EventAdminController::class);
-    Route::resource('documentation', App\Http\Controllers\Admin\DocumentationAdminController::class);
-});
