@@ -55,7 +55,10 @@ class AdminController extends Controller
             'holidays' => \App\Models\Holiday::getByYear(date('Y'))->count(),
         ];
 
-        return view('admin.dashboard', compact('stats'));
+        // Get recent members (limit to 5 most recent)
+        $recent_members = \App\Models\Member::orderBy('created_at', 'desc')->limit(5)->get();
+
+        return view('admin.dashboard', compact('stats', 'recent_members'));
     }
 
     public function tinker()
