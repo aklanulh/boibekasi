@@ -52,7 +52,7 @@ class AdminController extends Controller
             'members' => \App\Models\Member::count(),
             'merchandises' => \App\Models\Merchandise::count(),
             'documentations' => \App\Models\Documentation::count(),
-            'holidays' => \App\Models\Holiday::count(),
+            'holidays' => \App\Models\Holiday::getByYear(date('Y'))->count(),
         ];
 
         return view('admin.dashboard', compact('stats'));
