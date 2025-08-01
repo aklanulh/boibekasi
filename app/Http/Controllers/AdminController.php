@@ -58,7 +58,17 @@ class AdminController extends Controller
         // Get recent members (limit to 5 most recent)
         $recent_members = \App\Models\Member::orderBy('created_at', 'desc')->limit(5)->get();
 
-        return view('admin.dashboard', compact('stats', 'recent_members'));
+        // Get upcoming events (limit to 5 most recent)
+        $upcoming_events = \App\Models\Event::where('date', '>=', date('Y-m-d'))
+            ->orderBy('date', 'asc')
+            ->orderBy('time', 'asc')
+            ->limit(5)
+            ->get();
+
+        // Get recent documentation (limit to 5 most recent)
+        $recent_documentation = \App\Models\Documentation::orderBy('created_at', 'desc')->limit(5)->get();
+
+        return view('admin.dashboard', compact('stats', 'recent_members', 'upcoming_events', 'recent_documentation'));
     }
 
     public function tinker()
