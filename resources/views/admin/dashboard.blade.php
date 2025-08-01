@@ -56,9 +56,9 @@
                         <i class="fas fa-users me-2"></i>
                         Member Terbaru
                     </h5>
-                    <a href="{{ route('admin.members.index') }}" class="btn btn-sm btn-outline-primary">
-                        Lihat Semua
-                    </a>
+                    <span class="btn btn-sm btn-outline-secondary disabled">
+                        Coming Soon
+                    </span>
                 </div>
                 <div class="card-body p-0">
                     @if($recent_members->count() > 0)
@@ -93,9 +93,9 @@
                         <i class="fas fa-calendar me-2"></i>
                         Event Mendatang
                     </h5>
-                    <a href="{{ route('admin.events.index') }}" class="btn btn-sm btn-outline-primary">
-                        Lihat Semua
-                    </a>
+                    <span class="btn btn-sm btn-outline-secondary disabled">
+                        Coming Soon
+                    </span>
                 </div>
                 <div class="card-body p-0">
                     @if($upcoming_events->count() > 0)
